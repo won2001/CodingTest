@@ -1,5 +1,6 @@
 ﻿namespace CodingTest1
 {
+    //두 수의 차이를 구하라
     public class Solution32
     {
         public int solution(int num1, int num2)
@@ -9,20 +10,21 @@
             return answer;
         }
     }
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("");
-        }
 
-        
+}
+//두 수의 합을 구하라
+public class Solution
+{
+    public int solution(int num1, int num2)
+    {
+        int answer = num1 + num2;
+        return answer;
     }
 }
-//두 수의 차이를 구하라
+
 
 //두 수의 곱을 구하라
-public class Solution
+public class Solution0
 {
     public int solution(int num1 = 2, int num2 = 4)
     {
@@ -151,6 +153,136 @@ public class Solution7
             return answer;
         }
     }*/
+}
+
+//분수의 덧셈
+public class Solution8
+{
+    public int[] solution(int denom1 = 2, int numer1 = 1, int denom2 = 4, int numer2 = 3)
+    {
+        var numer3 = numer1 * numer2;
+        var denum3 = denom1 * numer2 + denom2 * numer1;
+        var gcd = getgcd(numer3, denum3);
+        numer3 /= gcd;
+        denum3 /= gcd;
+
+        int[] answer = new int[] { denum3, numer3 };
+        return answer;
+    }
+    public int getgcd(int n, int m)
+    {
+        //두 수 n, m 이 있을 때 어느 한 수가 0이 될 때 까지
+        //gcd(m, n%m) 의 재귀함수 반복
+        if (m == 0) return n;
+        else return getgcd(m, n % m);
+    }
+
+    //다른사람 풀이
+    /*public class Solution
+    {
+        public int GCD(int denum, int num)
+        {
+            if (num == 0)
+                return denum;
+            else
+                return GCD(num, denum % num);
+        }
+
+        public int[] solution(int denum1, int num1, int denum2, int num2)
+        {
+            int[] answer = new int[2];
+            int denum = (num1 * denum2) + (denum1 * num2); // 분자
+            int num = (num1 * num2);    // 분모
+
+            int min = GCD(denum, num);  // 최대공약수
+
+            answer[0] = denum / min;
+            answer[1] = num / min;
+            return answer;
+        }
+    }*/
+}
+//배열 두배 만들기
+public class Solution9
+{
+    public int[] solution(int[] numbers)
+    {
+        int[] answer = new int[numbers.Length];
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            answer[i] = numbers[i] * 2;
+        }
+        return answer;
+    }
+    //다른사람 풀이
+    /*public class Solution
+    {
+        public int[] solution(int[] numbers)
+        {
+            for (var i = 0; i < numbers.Length; ++i)
+            {
+                numbers[i] *= 2;
+            }
+            return numbers;
+        }
+    }*/
+}
+//짝수의 합
+public class Solution10
+{
+    public int solution(int n)
+    {
+        int answer = 0;
+        for (int i = 0; i <= n; i++)
+        {
+           if(i % 2 ==0)
+                answer += i;
+        }
+        return answer;
+    }
+    //다른사람의 풀이
+    /*public class Solution
+    {
+        public int solution(int n)
+        {
+            int result = 0;
+            for (int i = 0; i <= n; i += 2)
+            {
+                result += i;
+            }
+            return result;
+        }
+    }*/
+    /*public class Solution
+    {
+        public int solution(int n)
+        {
+            return n / 2 * (n / 2 + 1);
+        }
+    }*/
+}
+//짝수는 싫어요
+public class Solution11
+{
+    public int[] solution(int n)
+    {
+
+        int[] answer = new int[] { };
+        List<int> num = new List<int>(); // 리스트 선언
+
+        for (int i = 1; i <= n; i++)
+        {
+            if (i % 2 == 1) //홀수라면
+            {
+                num.Add(i);
+            }
+        }
+        num.Sort();
+        answer = num.ToArray();
+
+        return answer;
+    }
 }
 
 
